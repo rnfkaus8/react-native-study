@@ -26,12 +26,17 @@ const App = () => {
   const screenSize = useWindowDimensions();
   const buttonSize = screenSize.width / 4;
 
-  const onPressNumber = useCallback<(pressed: number) => void>(pressed => {
-    console.log(pressed);
-  }, []);
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  const onPressNumber = useCallback<(pressed: number) => void>(pressed => {
+    console.log(pressed);
+  }, []);
+
+  const onPressAction = useCallback<(action: string) => void>(pressed => {
+    console.log(pressed);
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -66,7 +71,31 @@ const App = () => {
               </Pressable>
             ))}
           </View>
-          <View />
+          <View style={{paddingHorizontal: 12}}>
+            {[
+              {label: '+', action: 'plus'},
+              {label: '-', action: 'minus'},
+              {label: '*', action: 'multiply'},
+              {label: '/', action: 'divide'},
+              {label: 'C', action: 'clear'},
+              {label: '=', action: 'equal'},
+            ].map(action => {
+              return (
+                <Pressable
+                  style={{
+                    width: screenSize.width / 6,
+                    height: screenSize.width / 6,
+                    borderRadius: (screenSize.width / 6) * 0.5,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'lightgray',
+                  }}
+                  onPress={() => onPressAction(action.action)}>
+                  <Text style={{fontSize: 24}}>{action.label}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
         </View>
       </View>
     </SafeAreaView>
