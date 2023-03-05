@@ -39,13 +39,16 @@ const App = () => {
   }, []);
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={{flex: 1}}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <View style={{flex: 1}}>
-        <View style={{flex: 1, flexDirection: 'row'}} />
+        <View
+          style={{flex: 1, alignItems: 'flex-end', justifyContent: 'center'}}>
+          <Text style={{fontSize: 48, padding: 48}}>연산 결과값 나오는 곳</Text>
+        </View>
         <View style={{flex: 1, flexDirection: 'row'}}>
           <View
             style={{
