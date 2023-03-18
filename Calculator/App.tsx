@@ -34,7 +34,6 @@ const App = () => {
   const [inputNum, setInputNum] = useState('');
 
   const onPressNumber = useCallback<(pressed: number) => void>(pressed => {
-    console.log(pressed);
     if (resultNum !== '') {
       setResultNum('');
     }
